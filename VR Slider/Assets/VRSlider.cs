@@ -11,7 +11,15 @@ public class VRSlider : MonoBehaviour
     {
         if (other.CompareTag("Hand"))
         {
-            
+            canBeInteracted = true;
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Hand"))
+        {
+            canBeInteracted = false;
+        } 
     }
 }

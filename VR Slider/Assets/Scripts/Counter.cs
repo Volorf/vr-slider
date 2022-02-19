@@ -7,6 +7,8 @@ using Vector3 = UnityEngine.Vector3;
 
 public class Counter : MonoBehaviour
 {
+    public VRSlider VRSlider;
+    
     private Vector3 _snappedHandPosition;
     private Vector3 _snappedButtonDir;
     private Vector3 _handDirVec;
@@ -16,7 +18,7 @@ public class Counter : MonoBehaviour
     private bool _isHandTouching = false;
     void Start()
     {
-        // SnapshotPosition();
+        VRSlider = transform.parent.GetComponent<VRSlider>();
     }
 
     private void OnTriggerEnter(Collider other)
