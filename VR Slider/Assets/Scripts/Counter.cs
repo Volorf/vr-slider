@@ -7,18 +7,18 @@ using Vector3 = UnityEngine.Vector3;
 
 public class Counter : MonoBehaviour
 {
-    public VRSlider VRSlider;
-    
+
     private Vector3 _snappedHandPosition;
     private Vector3 _snappedButtonDir;
     private Vector3 _handDirVec;
 
+    private float _triggerOffset = 0.25f;
+    private float _buttonOffset = 0.5f;
     private Transform _handTransform;
-
+    
     private bool _isHandTouching = false;
     void Start()
     {
-        VRSlider = transform.parent.GetComponent<VRSlider>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -44,40 +44,35 @@ public class Counter : MonoBehaviour
         }
     }
 
-    private Vector3 GetHandDirection(Vector3 snapVec, Vector3 curVec)
-    {
-        return snapVec - curVec;
-    }
+
     
 
     // Update is called once per frame
     void Update()
     {
-        
         if (_isHandTouching)
         {
             _handDirVec = GetHandDirection(_snappedHandPosition, _handTransform.position);
             // print("_handDirVec: " + _handDirVec);
-            // Debug.DrawLine(_snappedHandPosition, _handTransform.position, Color.blue);
+            Debug.DrawLine(_snappedHandPosition, _handTransform.position, Color.blue);
             float angle = Vector3.Angle(_snappedButtonDir, _handDirVec * -1);
             float radFromDegs = Mathf.Deg2Rad * angle;
             float cMag = _handDirVec.magnitude * Mathf.Cos(radFromDegs);
             // print("cMag: " + cMag);
-            // Debug.DrawLine(_snappedHandPosition - transform.position, _snappedHandPosition - transform.up * cMag, Color.black);
-            float cMagClamp = Mathf.Clamp(cMag, 0, 0.5f);
-            transform.localPosition = new Vector3(0, -cMagClamp, 0);
-
+            Debug.DrawLine(_snappedHandPosition - transform.position, _snappedHandPosition - transform.up * cMag, Color.black);
+            float cMagClamp = Mathf.Clamp(cMag, _triggerOffset, _buttonOffset + _triggerOffset);
+            transform.localPosition = new Vector3(0, -cMagClamp + _triggerOffset, 0);
             // print("angle: " + angle);
         }
         else
         {
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, Vector3.zero, 1f * Time.deltaTime);
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, Vector3.zero, 3f * Time.deltaTime);
         }
 
         // print("button up vec: " + transform.up);
         
         
-        // Debug.DrawLine(transform.position, transform.up, Color.red);
+        Debug.DrawLine(transform.position, transform.up, Color.red);
         
         // print("local pos: " + transform.position);
         // print("distance: " + _distance);
@@ -86,5 +81,10 @@ public class Counter : MonoBehaviour
     public void SnapshotPosition()
     {
         // _snapPosition = transform.position;
+    }
+    
+    private Vector3 GetHandDirection(Vector3 snapVec, Vector3 curVec)
+    {
+        return snapVec - curVec;
     }
 }
