@@ -153,6 +153,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 315477755e2f84af4841e240d6d25cd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onSliderIn:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4662507135804138788}
+        m_TargetAssemblyTypeName: ButtonColorChanger, Assembly-CSharp
+        m_MethodName: SetActiveColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSliderOut:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4662507135804138788}
+        m_TargetAssemblyTypeName: ButtonColorChanger, Assembly-CSharp
+        m_MethodName: SetNormalColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8276994409723171204
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,6 +225,7 @@ GameObject:
   - component: {fileID: 898992360565272350}
   - component: {fileID: 2656516188266625317}
   - component: {fileID: 996296529628176898}
+  - component: {fileID: 4662507135804138788}
   m_Layer: 0
   m_Name: Counter
   m_TagString: Untagged
@@ -266,3 +297,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4662507135804138788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8941672806228108010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8109dd57c95c04e1d9fa83f38181f9b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeColor: {r: 1, g: 0, b: 0, a: 0}
+  normalColor: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 0}
