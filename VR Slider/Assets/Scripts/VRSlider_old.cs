@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VRSlider : MonoBehaviour
+public class VRSlider_old : MonoBehaviour
 {
     public bool canBeInteracted = false;
 

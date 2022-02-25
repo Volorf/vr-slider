@@ -59,7 +59,7 @@ public class Counter : MonoBehaviour
             float radFromDegs = Mathf.Deg2Rad * angle;
             float cMag = _handDirVec.magnitude * Mathf.Cos(radFromDegs);
             // print("cMag: " + cMag);
-            Debug.DrawLine(_snappedHandPosition - transform.position, _snappedHandPosition - transform.up * cMag, Color.black);
+            // Debug.DrawLine(_snappedHandPosition - transform.position, _snappedHandPosition - transform.up * cMag, Color.black);
             float cMagClamp = Mathf.Clamp(cMag, _triggerOffset, _buttonOffset + _triggerOffset);
             transform.localPosition = new Vector3(0, -cMagClamp + _triggerOffset, 0);
             // print("angle: " + angle);
