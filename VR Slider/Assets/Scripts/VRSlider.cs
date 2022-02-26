@@ -11,6 +11,8 @@ public class VRSlider : MonoBehaviour
     public UnityEvent onSliderIn;
     public UnityEvent onSliderOut;
 
+    public float offset;
+
     [SerializeField] private TextMesh text;
     
     private Vector3 _snappedHandPosition;
@@ -20,11 +22,14 @@ public class VRSlider : MonoBehaviour
     private Transform _handTransform;
 
     private float _tempOffset = 0;
-    private float _counterStep = 0.25f;
+    private float _counterStep = 0.5f;
     private int _counter = 0;
-    
-    
-    
+
+
+    private void Start()
+    {
+        text.text = "0";
+    }
     
     private void OnTriggerEnter(Collider other)
     {
@@ -75,7 +80,7 @@ public class VRSlider : MonoBehaviour
             // Debug.DrawLine(_snappedHandPosition, _handTransform.position, Color.blue);
             
             float angle = Vector3.Angle(_snappedButtonDir, _handDirVec) * Mathf.Deg2Rad;
-            float offset = _handDirVec.magnitude * Mathf.Cos(angle);
+            offset = _handDirVec.magnitude * Mathf.Cos(angle);
             // Debug.DrawLine(_snappedHandPosition, _snappedHandPosition - transform.up * offset, Color.red);
 
             if (offset > _tempOffset + _counterStep)

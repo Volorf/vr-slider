@@ -39,7 +39,7 @@ public class Counter : MonoBehaviour
         {
             _snappedButtonDir = transform.position - transform.up;
             _isHandTouching = false;
-            print("the hand is gone.");
+            // print("the hand is gone.");
             // transform.localPosition = new Vector3(0, 0, 0);
         }
     }
