@@ -5,6 +5,12 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Events;
 
+internal enum BordersState
+{
+    Collapsed,
+    Expanded
+}
+
 public class BordersManager : MonoBehaviour
 {
     public UnityEvent expandBorders;
@@ -13,6 +19,7 @@ public class BordersManager : MonoBehaviour
     public float step = 0.5f;
     private float _targetOffset = 0;
     private float _targetLimit = 1.5f;
+    
 
     public void Up()
     {
