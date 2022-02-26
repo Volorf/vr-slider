@@ -268,12 +268,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 283037214067893973}
+        m_TargetAssemblyTypeName: BordersManager, Assembly-CSharp
+        m_MethodName: Expand
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onSliderOut:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4662507135804138788}
         m_TargetAssemblyTypeName: ButtonColorChanger, Assembly-CSharp
         m_MethodName: SetNormalColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 283037214067893973}
+        m_TargetAssemblyTypeName: BordersManager, Assembly-CSharp
+        m_MethodName: Collapse
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -431,7 +455,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
       propertyPath: m_LocalPosition.z
@@ -516,7 +540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
       propertyPath: m_LocalPosition.z
@@ -630,7 +654,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
       propertyPath: m_LocalPosition.z
@@ -810,7 +834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
       propertyPath: m_LocalPosition.z
@@ -924,7 +948,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1038,7 +1062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
       propertyPath: m_LocalPosition.z

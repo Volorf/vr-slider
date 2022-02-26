@@ -15,6 +15,8 @@ public class BordersManager : MonoBehaviour
 {
     public UnityEvent expandBorders;
     public UnityEvent collapseBorders;
+
+    private BordersState _currentState = BordersState.Collapsed;
     
     public float step = 0.5f;
     private float _targetOffset = 0;
@@ -37,11 +39,15 @@ public class BordersManager : MonoBehaviour
 
     public void Expand()
     {
+        if (_currentState == BordersState.Expanded) return;
+        _currentState = BordersState.Expanded;
         expandBorders.Invoke();
     }
 
     public void Collapse()
     {
+        if(_currentState == BordersState.Collapsed) return;
+        _currentState = BordersState.Collapsed;
         collapseBorders.Invoke();
     }
 
