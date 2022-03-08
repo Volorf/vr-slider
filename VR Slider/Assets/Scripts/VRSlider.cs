@@ -81,6 +81,7 @@ public class VRSlider : MonoBehaviour
             
             float angle = Vector3.Angle(_snappedButtonDir, _handDirVec) * Mathf.Deg2Rad;
             offset = _handDirVec.magnitude * Mathf.Cos(angle);
+            
             // Debug.DrawLine(_snappedHandPosition, _snappedHandPosition - transform.up * offset, Color.red);
 
             if (offset > _tempOffset + _counterStep)
@@ -97,7 +98,10 @@ public class VRSlider : MonoBehaviour
 
             print("temp offset: " + _tempOffset);
             print("offset: " + offset);
-
+            
+            // Clamp offset
+            if (offset > 1.5f || offset < -1.5f) return;
+            
             transform.localPosition = new Vector3(0, -offset, 0);
             // print("angle is " + angle);
         }

@@ -11,8 +11,12 @@ public class BorderMover : MonoBehaviour
     public UnityEvent chainExpand;
     
     public float offset = 0.5f;
-    private float _dur = 1f;
+    private float _dur = 0.1f;
 
+    public void SetDuration(float dur)
+    {
+        _dur = dur;
+    }
     public void Collapse()
     {
         transform.DOLocalMoveY(0f, _dur).OnComplete(CallChainCollapse);
