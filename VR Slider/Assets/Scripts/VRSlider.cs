@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class VRSlider : MonoBehaviour
 {
     public bool canBeInteracted = false;
+    public BordersManager bordersManager;
 
     public UnityEvent onSliderIn;
     public UnityEvent onSliderOut;
@@ -83,24 +84,29 @@ public class VRSlider : MonoBehaviour
             offset = _handDirVec.magnitude * Mathf.Cos(angle);
             
             // Debug.DrawLine(_snappedHandPosition, _snappedHandPosition - transform.up * offset, Color.red);
-
-            if (offset > _tempOffset + _counterStep)
+            
+            if (offset > 1.5f || offset < -1.5f) return;
+            
+            if (offset >= _tempOffset + _counterStep)
             {
                 _counter--;
                 _tempOffset += _counterStep;
+                bordersManager.Up();
             }
             
-            if (offset < _tempOffset - _counterStep)
+            if (offset <= _tempOffset - _counterStep)
             {
                 _counter++;
                 _tempOffset -= _counterStep;
+                bordersManager.Down();
             }
 
             print("temp offset: " + _tempOffset);
             print("offset: " + offset);
             
-            // Clamp offset
-            if (offset > 1.5f || offset < -1.5f) return;
+            // Clamp offset 
+            // TODO fix hardcoded values
+            
             
             transform.localPosition = new Vector3(0, -offset, 0);
             // print("angle is " + angle);
@@ -108,6 +114,8 @@ public class VRSlider : MonoBehaviour
         else
         {
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, Vector3.zero, 5f * Time.deltaTime);
+            bordersManager.Reset();
+            _tempOffset = 0;
         }
 
         
