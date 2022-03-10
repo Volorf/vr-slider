@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using DG.Tweening;
 
 public class VRSlider : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class VRSlider : MonoBehaviour
     private float _tempOffset = 0;
     private float _counterStep = 0.5f;
     private int _counter = 0;
+
+    private bool _hasBeenResetted = false;
+    private float _dur = 1f;
 
 
     private void Start()
@@ -70,11 +74,13 @@ public class VRSlider : MonoBehaviour
 
         if (!canBeInteracted)
         {
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, Vector3.zero, 5f * Time.deltaTime);
+            //transform.localPosition = Vector3.MoveTowards(transform.localPosition, Vector3.zero, 5f * Time.deltaTime);
+            transform.DOLocalMoveY(0, _dur);
         }
         
         if (Input.GetKey(KeyCode.Space) && canBeInteracted)
         {
+            _hasBeenResetted = false;
             text.text = _counter.ToString();
             
             _handDirVec = Helper.GetHandDirection(_snappedHandPosition, _handTransform.position);
@@ -85,7 +91,7 @@ public class VRSlider : MonoBehaviour
             
             // Debug.DrawLine(_snappedHandPosition, _snappedHandPosition - transform.up * offset, Color.red);
             
-            if (offset > 1.5f || offset < -1.5f) return;
+            if (offset > 2f || offset < -2f) return;
             
             if (offset >= _tempOffset + _counterStep)
             {
@@ -113,9 +119,12 @@ public class VRSlider : MonoBehaviour
         }
         else
         {
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, Vector3.zero, 5f * Time.deltaTime);
-            bordersManager.Reset();
+            //transform.localPosition = Vector3.MoveTowards(transform.localPosition, Vector3.zero, 5f * Time.deltaTime);
+            // transform.DOLocalMoveY(0f, 1f);
+            // if (!_hasBeenResetted) return;
+            // bordersManager.Reset();
             _tempOffset = 0;
+            _hasBeenResetted = true;
         }
 
         

@@ -7,8 +7,9 @@ using UnityEngine.Events;
 public class BorderMover : MonoBehaviour
 {
 
-    public UnityEvent chainCollapse;
+    // public UnityEvent chainCollapse;
     public UnityEvent chainExpand;
+    // public UnityEvent chainReset;
     
     public float offset = 0.5f;
     private float _dur = 0.1f;
@@ -19,7 +20,7 @@ public class BorderMover : MonoBehaviour
     }
     public void Collapse()
     {
-        transform.DOLocalMoveY(0f, _dur).OnComplete(CallChainCollapse);
+        // transform.DOLocalMoveY(0f, _dur).OnComplete(CallChainCollapse);
     }
 
     public void Expand()
@@ -27,9 +28,15 @@ public class BorderMover : MonoBehaviour
         transform.DOLocalMoveY(offset, _dur).OnComplete(CallChainExpand);
     }
 
+    public void Reset()
+    {
+        transform.localPosition = Vector3.zero;
+        // chainReset.Invoke();
+    }
+
     private void CallChainCollapse()
     {
-        chainCollapse.Invoke();
+        // chainCollapse.Invoke();
     }
 
     private void CallChainExpand()

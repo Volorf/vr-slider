@@ -15,6 +15,7 @@ public class BordersManager : MonoBehaviour
 {
     public UnityEvent expandBorders;
     public UnityEvent collapseBorders;
+    public UnityEvent resetBorders;
 
     private BordersState _currentState = BordersState.Collapsed;
     
@@ -57,7 +58,8 @@ public class BordersManager : MonoBehaviour
     {
         _offsetCounter = 0;
         _targetOffset = 0;
-        transform.DOLocalMoveY(0f, _dur);
+        transform.localPosition = Vector3.zero;
+        
     }
 
     public void Expand()
@@ -71,7 +73,9 @@ public class BordersManager : MonoBehaviour
     {
         if(_currentState == BordersState.Collapsed) return;
         _currentState = BordersState.Collapsed;
-        collapseBorders.Invoke();
+        // collapseBorders.Invoke();
+        Reset();
+        resetBorders.Invoke();
     }
 
     
@@ -90,7 +94,7 @@ public class BordersManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            Collapse();
+            // Collapse();
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
