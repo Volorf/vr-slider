@@ -99,14 +99,6 @@ public class BordersManager : MonoBehaviour
         // collapseBorders.Invoke();
         Reset();
         resetBorders.Invoke();
-        
-        // 3 + x = 0
-        // 2 + x = 1
-        // 1 + x = 2
-        // 0 + x = 3
-        // -1 + x = 4
-        
-        
         borderModerator.SetTargetY(0f, step * m);
     }
 

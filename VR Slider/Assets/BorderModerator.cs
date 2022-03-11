@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -63,7 +61,7 @@ public class BorderModerator : MonoBehaviour
         UpdateY(yOffset);
         ShowBorders();
         triggerBorder.Invoke(targetY);
-        Invoke("HideBorders", 1f);
+        Invoke("HideBorders", 0.5f);
     }
 
     private void ShowBorders()
