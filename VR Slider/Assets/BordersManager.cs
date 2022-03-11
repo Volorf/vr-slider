@@ -16,6 +16,7 @@ public class BordersManager : MonoBehaviour
     public UnityEvent expandBorders;
     public UnityEvent collapseBorders;
     public UnityEvent resetBorders;
+    public BorderModerator borderModerator;
 
     private BordersState _currentState = BordersState.Collapsed;
     
@@ -24,7 +25,7 @@ public class BordersManager : MonoBehaviour
     private float _targetLimit = 1.5f;
     private float _dur = 0.2f;
 
-    private int _offsetCounter = 0;
+    [SerializeField] private int _offsetCounter = 0;
     
 
     public void Up()
@@ -73,9 +74,40 @@ public class BordersManager : MonoBehaviour
     {
         if(_currentState == BordersState.Collapsed) return;
         _currentState = BordersState.Collapsed;
+        
+        int m;
+
+        switch (_offsetCounter)
+        {
+            case 3: m = 0;
+                break;
+            case 2: m = 1;
+                break;
+            case 1: m = 2;
+                break;
+            case 0: m = 3;
+                break;
+            case -1: m = 4;
+                break;
+            case -2: m = 5;
+                break;
+            case -3: m = 6;
+                break;
+            default: m = -1;
+                break;
+        }
         // collapseBorders.Invoke();
         Reset();
         resetBorders.Invoke();
+        
+        // 3 + x = 0
+        // 2 + x = 1
+        // 1 + x = 2
+        // 0 + x = 3
+        // -1 + x = 4
+        
+        
+        borderModerator.SetTargetY(0f, step * m);
     }
 
     
