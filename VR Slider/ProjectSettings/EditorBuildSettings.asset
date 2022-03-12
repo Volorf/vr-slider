@@ -4,5 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
-  m_configObjects: {}
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/VRSlider.unity
+    guid: 24224b945cb064ab98f7907cc1801a26
+  m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 7f3d70d871a2843f58158b07723ed8eb, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 9c1d63a25642943a0b24076d296ad4f2, type: 2}
