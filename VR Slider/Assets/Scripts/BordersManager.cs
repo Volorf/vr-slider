@@ -13,6 +13,8 @@ internal enum BordersState
 
 public class BordersManager : MonoBehaviour
 {
+    public VRSliderSettings settings;
+    
     public UnityEvent expandBorders;
     public UnityEvent collapseBorders;
     public UnityEvent resetBorders;
@@ -20,44 +22,50 @@ public class BordersManager : MonoBehaviour
 
     private BordersState _currentState = BordersState.Collapsed;
     
-    public float step = 0.5f;
+    private float _step;
     private float _targetOffset = 0;
-    private float _targetLimit = 1.5f;
-    private float _dur = 0.2f;
+    private float _targetLimit;
+    private float _snapSpeed;
 
-    [SerializeField] private int _offsetCounter = 0;
-    
+    [SerializeField] private int offsetCounter = 0;
+
+    private void Start()
+    {
+        _step = settings.step;
+        _targetLimit = settings.stepCountLimit * _step;
+        _snapSpeed = settings.snapSpeed;
+    }
 
     public void Up()
     {
-        _offsetCounter--;
-        if (_offsetCounter < -3)
+        offsetCounter--;
+        if (offsetCounter < -settings.stepCountLimit)
         {
-            _offsetCounter = -3;
+            offsetCounter = -settings.stepCountLimit;
             return;
         }
-        print("_offsetCounter is " + _offsetCounter);
+        // print("_offsetCounter is " + offsetCounter);
         if (_targetOffset >= _targetLimit) return;
-        _targetOffset += step;
-        transform.DOLocalMoveY(_targetOffset, _dur).SetEase(Ease.Linear);
+        _targetOffset += _step;
+        transform.DOLocalMoveY(_targetOffset, _snapSpeed).SetEase(Ease.Linear);
     }
     
     public void Down()
     {
-        _offsetCounter++;
-        if (_offsetCounter > 3)
+        offsetCounter++;
+        if (offsetCounter > settings.stepCountLimit)
         {
-            _offsetCounter = 3;
+            offsetCounter = settings.stepCountLimit;
             return;
         }
         if (_targetOffset <= -_targetLimit) return;
-        _targetOffset -= step;
-        transform.DOLocalMoveY(_targetOffset, _dur);
+        _targetOffset -= _step;
+        transform.DOLocalMoveY(_targetOffset, _snapSpeed);
     }
 
     public void Reset()
     {
-        _offsetCounter = 0;
+        offsetCounter = 0;
         _targetOffset = 0;
         transform.localPosition = Vector3.zero;
         
@@ -77,7 +85,7 @@ public class BordersManager : MonoBehaviour
         
         int m;
 
-        switch (_offsetCounter)
+        switch (offsetCounter)
         {
             case 3: m = 0;
                 break;
@@ -99,7 +107,7 @@ public class BordersManager : MonoBehaviour
         // collapseBorders.Invoke();
         Reset();
         resetBorders.Invoke();
-        borderModerator.SetTargetY(0f, step * m);
+        borderModerator.SetTargetY(0f, _step * m);
     }
 
     

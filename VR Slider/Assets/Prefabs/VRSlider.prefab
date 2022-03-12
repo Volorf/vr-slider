@@ -25,14 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674893389719281193}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: 0.7071068, w: 0}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.05, y: 0.050000004, z: 0.10000001}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 898992360565272350}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 90, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!23 &7838200014383751557
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c1e30d0372a841f3aa72ca62754d702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 131155377e8b64a959e488726aeef83c, type: 2}
   expandBorders:
     m_PersistentCalls:
       m_Calls:
@@ -272,8 +273,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   borderModerator: {fileID: 5201766395290575836}
-  step: 0.5
-  _offsetCounter: 0
+  offsetCounter: 0
 --- !u!1 &4073551160926905663
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,6 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 315477755e2f84af4841e240d6d25cd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 131155377e8b64a959e488726aeef83c, type: 2}
   canBeInteracted: 0
   bordersManager: {fileID: 283037214067893973}
   onSliderIn:
@@ -579,6 +580,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0a72bf632edaa4eeb8d5beccd7200c88, type: 2}
+    - target: {fileID: -5754084199372789682, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -8374849331660108554, guid: e3509b4785a8340ed8f29a1a54115ad3, type: 3}
     - target: {fileID: 919132149155446097, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
       propertyPath: m_Name
       value: Up3
@@ -602,10 +607,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca22cf11ee994fd5926cd20fbd57e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: 0
+  settings: {fileID: 11400000, guid: 131155377e8b64a959e488726aeef83c, type: 2}
   chainExpand:
     m_PersistentCalls:
       m_Calls: []
-  offset: 0.5
 --- !u!1001 &659587048465064117
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -661,6 +667,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0a72bf632edaa4eeb8d5beccd7200c88, type: 2}
+    - target: {fileID: -5754084199372789682, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -8374849331660108554, guid: e3509b4785a8340ed8f29a1a54115ad3, type: 3}
     - target: {fileID: 919132149155446097, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
       propertyPath: m_Name
       value: Down2
@@ -684,6 +694,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca22cf11ee994fd5926cd20fbd57e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: 1
+  settings: {fileID: 11400000, guid: 131155377e8b64a959e488726aeef83c, type: 2}
   chainExpand:
     m_PersistentCalls:
       m_Calls:
@@ -699,7 +711,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  offset: -0.5
 --- !u!4 &1057760493164824414 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
@@ -760,6 +771,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0a72bf632edaa4eeb8d5beccd7200c88, type: 2}
+    - target: {fileID: -5754084199372789682, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -8374849331660108554, guid: e3509b4785a8340ed8f29a1a54115ad3, type: 3}
     - target: {fileID: 919132149155446097, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
       propertyPath: m_Name
       value: Down1
@@ -783,6 +798,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca22cf11ee994fd5926cd20fbd57e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: 1
+  settings: {fileID: 11400000, guid: 131155377e8b64a959e488726aeef83c, type: 2}
   chainExpand:
     m_PersistentCalls:
       m_Calls:
@@ -798,7 +815,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  offset: -0.5
 --- !u!4 &2296379913364544066 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
@@ -859,6 +875,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0a72bf632edaa4eeb8d5beccd7200c88, type: 2}
+    - target: {fileID: -5754084199372789682, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -8374849331660108554, guid: e3509b4785a8340ed8f29a1a54115ad3, type: 3}
     - target: {fileID: 919132149155446097, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
       propertyPath: m_Name
       value: Base
@@ -925,6 +945,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0a72bf632edaa4eeb8d5beccd7200c88, type: 2}
+    - target: {fileID: -5754084199372789682, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -8374849331660108554, guid: e3509b4785a8340ed8f29a1a54115ad3, type: 3}
     - target: {fileID: 919132149155446097, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
       propertyPath: m_Name
       value: Up1
@@ -953,6 +977,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca22cf11ee994fd5926cd20fbd57e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: 0
+  settings: {fileID: 11400000, guid: 131155377e8b64a959e488726aeef83c, type: 2}
   chainExpand:
     m_PersistentCalls:
       m_Calls:
@@ -968,7 +994,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  offset: 0.5
 --- !u!1001 &3817001904984473952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -976,10 +1001,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 898992360565272350}
     m_Modifications:
+    - target: {fileID: 1410461542225046513, guid: 2687d996ae559477da1e7374c593b353, type: 3}
+      propertyPath: settings
+      value: 
+      objectReference: {fileID: 11400000, guid: 131155377e8b64a959e488726aeef83c, type: 2}
+    - target: {fileID: 1480962793095543085, guid: 2687d996ae559477da1e7374c593b353, type: 3}
+      propertyPath: settings
+      value: 
+      objectReference: {fileID: 11400000, guid: 131155377e8b64a959e488726aeef83c, type: 2}
+    - target: {fileID: 2378924774109319671, guid: 2687d996ae559477da1e7374c593b353, type: 3}
+      propertyPath: settings
+      value: 
+      objectReference: {fileID: 11400000, guid: 131155377e8b64a959e488726aeef83c, type: 2}
+    - target: {fileID: 2773409397379314261, guid: 2687d996ae559477da1e7374c593b353, type: 3}
+      propertyPath: settings
+      value: 
+      objectReference: {fileID: 11400000, guid: 131155377e8b64a959e488726aeef83c, type: 2}
     - target: {fileID: 3206148492790694104, guid: 2687d996ae559477da1e7374c593b353, type: 3}
       propertyPath: m_Name
       value: BordersCollapse
       objectReference: {fileID: 0}
+    - target: {fileID: 3206148492790694104, guid: 2687d996ae559477da1e7374c593b353, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310012953343365468, guid: 2687d996ae559477da1e7374c593b353, type: 3}
+      propertyPath: settings
+      value: 
+      objectReference: {fileID: 11400000, guid: 131155377e8b64a959e488726aeef83c, type: 2}
+    - target: {fileID: 6223035639018664300, guid: 2687d996ae559477da1e7374c593b353, type: 3}
+      propertyPath: settings
+      value: 
+      objectReference: {fileID: 11400000, guid: 131155377e8b64a959e488726aeef83c, type: 2}
     - target: {fileID: 6293033790768079857, guid: 2687d996ae559477da1e7374c593b353, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1024,6 +1077,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7039487850166970460, guid: 2687d996ae559477da1e7374c593b353, type: 3}
+      propertyPath: settings
+      value: 
+      objectReference: {fileID: 11400000, guid: 131155377e8b64a959e488726aeef83c, type: 2}
+    - target: {fileID: 8991671932982993596, guid: 2687d996ae559477da1e7374c593b353, type: 3}
+      propertyPath: settings
+      value: 
+      objectReference: {fileID: 11400000, guid: 131155377e8b64a959e488726aeef83c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2687d996ae559477da1e7374c593b353, type: 3}
 --- !u!114 &5201766395290575836 stripped
@@ -1097,6 +1158,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0a72bf632edaa4eeb8d5beccd7200c88, type: 2}
+    - target: {fileID: -5754084199372789682, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -8374849331660108554, guid: e3509b4785a8340ed8f29a1a54115ad3, type: 3}
     - target: {fileID: 919132149155446097, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
       propertyPath: m_Name
       value: Up2
@@ -1125,6 +1190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca22cf11ee994fd5926cd20fbd57e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: 0
+  settings: {fileID: 11400000, guid: 131155377e8b64a959e488726aeef83c, type: 2}
   chainExpand:
     m_PersistentCalls:
       m_Calls:
@@ -1140,7 +1207,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  offset: 0.5
 --- !u!1001 &5857586656611355925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1196,6 +1262,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0a72bf632edaa4eeb8d5beccd7200c88, type: 2}
+    - target: {fileID: -5754084199372789682, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -8374849331660108554, guid: e3509b4785a8340ed8f29a1a54115ad3, type: 3}
     - target: {fileID: 919132149155446097, guid: 574a9102ea50a412e9412c91cb89ce05, type: 3}
       propertyPath: m_Name
       value: Down3
@@ -1219,7 +1289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca22cf11ee994fd5926cd20fbd57e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: 1
+  settings: {fileID: 11400000, guid: 131155377e8b64a959e488726aeef83c, type: 2}
   chainExpand:
     m_PersistentCalls:
       m_Calls: []
-  offset: -0.5

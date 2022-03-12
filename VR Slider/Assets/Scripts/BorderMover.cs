@@ -1,22 +1,33 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
+public enum Direction
+{
+    Up,
+    Down
+}
+
 public class BorderMover : MonoBehaviour
 {
+    public Direction direction = Direction.Up;
+    
+    public VRSliderSettings settings;
 
     // public UnityEvent chainCollapse;
     public UnityEvent chainExpand;
     // public UnityEvent chainReset;
     
-    public float offset = 0.5f;
-    private float _dur = 0.1f;
+    private float _offset;
+    private float _dur;
 
-    public void SetDuration(float dur)
+    private void Start()
     {
-        _dur = dur;
+        _offset = settings.step * (direction == Direction.Up ? 1f : -1f);
+        _dur = settings.expendDur;
     }
     public void Collapse()
     {
@@ -25,7 +36,7 @@ public class BorderMover : MonoBehaviour
 
     public void Expand()
     {
-        transform.DOLocalMoveY(offset, _dur).OnComplete(CallChainExpand);
+        transform.DOLocalMoveY(_offset, _dur).OnComplete(CallChainExpand);
     }
 
     public void Reset()

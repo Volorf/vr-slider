@@ -42,13 +42,19 @@ public class Border
 }
 public class BorderModerator : MonoBehaviour
 {
+    public VRSliderSettings settings;
+    
     private List<Border> _borders = new List<Border>();
 
     private void Start()
     {
+        int index = 0;
         foreach (Transform border in transform)
         {
-            Border b = new Border(border.gameObject, border.localPosition);
+            Vector3 pos = new Vector3(0f, -index * settings.step);
+            index++;
+            
+            Border b = new Border(border.gameObject, pos);
             _borders.Add(b);
         }
         HideBorders();
@@ -61,7 +67,7 @@ public class BorderModerator : MonoBehaviour
         UpdateY(yOffset);
         ShowBorders();
         triggerBorder.Invoke(targetY);
-        Invoke("HideBorders", 0.5f);
+        Invoke("HideBorders", settings.collapseDur);
     }
 
     private void ShowBorders()
