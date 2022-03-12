@@ -28,8 +28,6 @@ public class VRSlider : MonoBehaviour
     private float _tempOffset = 0;
     private float _counterStep;
     private int _counter = 0;
-
-    private bool _hasBeenReseted = false;
     private float _dur;
 
     private float _limit;
@@ -82,13 +80,11 @@ public class VRSlider : MonoBehaviour
 
         if (!canBeInteracted)
         {
-            //transform.localPosition = Vector3.MoveTowards(transform.localPosition, Vector3.zero, 5f * Time.deltaTime);
             transform.DOLocalMoveY(0, _dur);
         }
         
         if (Input.GetKey(KeyCode.Space) && canBeInteracted)
         {
-            _hasBeenReseted = false;
             text.text = _counter.ToString();
             
             _handDirVec = Helper.GetHandDirection(_snappedHandPosition, _handTransform.position);
@@ -114,31 +110,12 @@ public class VRSlider : MonoBehaviour
                 _tempOffset -= _counterStep;
                 bordersManager.Down();
             }
-
-            print("temp offset: " + _tempOffset);
-            print("offset: " + offset);
-            
-            // Clamp offset 
-            // TODO fix hardcoded values
-            
             
             transform.localPosition = new Vector3(0, -offset, 0);
-            // print("angle is " + angle);
         }
         else
         {
-            //transform.localPosition = Vector3.MoveTowards(transform.localPosition, Vector3.zero, 5f * Time.deltaTime);
-            // transform.DOLocalMoveY(0f, 1f);
-            // if (!_hasBeenResetted) return;
-            // bordersManager.Reset();
             _tempOffset = 0;
-            _hasBeenReseted = true;
         }
-
-        
-        // else
-        // {
-        //     
-        // }
     }
 }

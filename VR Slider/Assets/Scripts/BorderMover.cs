@@ -14,13 +14,9 @@ public enum Direction
 public class BorderMover : MonoBehaviour
 {
     public Direction direction = Direction.Up;
-    
     public VRSliderSettings settings;
-
-    // public UnityEvent chainCollapse;
     public UnityEvent chainExpand;
-    // public UnityEvent chainReset;
-    
+
     private float _offset;
     private float _dur;
 
@@ -42,12 +38,6 @@ public class BorderMover : MonoBehaviour
     public void Reset()
     {
         transform.localPosition = Vector3.zero;
-        // chainReset.Invoke();
-    }
-
-    private void CallChainCollapse()
-    {
-        // chainCollapse.Invoke();
     }
 
     private void CallChainExpand()

@@ -94,5 +94,4 @@ public class BorderModerator : MonoBehaviour
             b.Hide();
         }
     }
-
 }

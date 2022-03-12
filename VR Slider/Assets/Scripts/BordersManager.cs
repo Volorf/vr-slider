@@ -44,7 +44,7 @@ public class BordersManager : MonoBehaviour
             offsetCounter = -settings.stepCountLimit;
             return;
         }
-        // print("_offsetCounter is " + offsetCounter);
+
         if (_targetOffset >= _targetLimit) return;
         _targetOffset += _step;
         transform.DOLocalMoveY(_targetOffset, _snapSpeed).SetEase(Ease.Linear);
@@ -82,56 +82,21 @@ public class BordersManager : MonoBehaviour
     {
         if(_currentState == BordersState.Collapsed) return;
         _currentState = BordersState.Collapsed;
-        
-        int m;
 
-        switch (offsetCounter)
+        int m = offsetCounter switch
         {
-            case 3: m = 0;
-                break;
-            case 2: m = 1;
-                break;
-            case 1: m = 2;
-                break;
-            case 0: m = 3;
-                break;
-            case -1: m = 4;
-                break;
-            case -2: m = 5;
-                break;
-            case -3: m = 6;
-                break;
-            default: m = -1;
-                break;
-        }
-        // collapseBorders.Invoke();
+            3 => 0,
+            2 => 1,
+            1 => 2,
+            0 => 3,
+            -1 => 4,
+            -2 => 5,
+            -3 => 6,
+            _ => -1
+        };
+
         Reset();
         resetBorders.Invoke();
         borderModerator.SetTargetY(0f, _step * m);
-    }
-
-    
-    // Test
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Up();
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Down();
-        }
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            // Collapse();
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            Expand();
-        }
-        
     }
 }
