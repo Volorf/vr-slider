@@ -66,13 +66,17 @@ public class VRSlider : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        // OVRInput.Update();
+        //|| OVRInput.GetDown(OVRInput.Touch.PrimaryIndexTrigger, OVRInput.Controller.RTouch)
+        //|| OVRInput.GetUp(OVRInput.Touch.PrimaryIndexTrigger, OVRInput.Controller.RTouch)
+        
+        if (Input.GetKeyDown(KeyCode.Space) )
         {
             _tempOffset = 0;
             _snappedHandPosition = _handTransform.position;
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space)  )
         {
             canBeInteracted = false;
             _tempOffset = 0;
