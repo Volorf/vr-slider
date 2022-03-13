@@ -67,16 +67,19 @@ public class VRSlider : MonoBehaviour
     private void Update()
     {
         // OVRInput.Update();
-        //|| OVRInput.GetDown(OVRInput.Touch.PrimaryIndexTrigger, OVRInput.Controller.RTouch)
-        //|| OVRInput.GetUp(OVRInput.Touch.PrimaryIndexTrigger, OVRInput.Controller.RTouch)
-        
-        if (Input.GetKeyDown(KeyCode.Space) )
+        //)
+        //)
+        //  || 
+        // if (OVRInput.GetDown(OVRInput.Touch.PrimaryIndexTrigger, OVRInput.Controller.RTouch)) 
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             _tempOffset = 0;
             _snappedHandPosition = _handTransform.position;
         }
-
-        if (Input.GetKeyUp(KeyCode.Space)  )
+        
+        // Input.GetKeyUp(KeyCode.Space)  || 
+        // if (OVRInput.GetUp(OVRInput.Touch.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             canBeInteracted = false;
             _tempOffset = 0;
@@ -87,17 +90,18 @@ public class VRSlider : MonoBehaviour
             transform.DOLocalMoveY(0, _dur);
         }
         
+        // if (OVRInput.Get(OVRInput.Touch.PrimaryIndexTrigger, OVRInput.Controller.RTouch) && canBeInteracted)
         if (Input.GetKey(KeyCode.Space) && canBeInteracted)
         {
             text.text = _counter.ToString();
             
             _handDirVec = Helper.GetHandDirection(_snappedHandPosition, _handTransform.position);
-            // Debug.DrawLine(_snappedHandPosition, _handTransform.position, Color.blue);
+            Debug.DrawLine(_snappedHandPosition, _handTransform.position, Color.blue);
             
             float angle = Vector3.Angle(_snappedButtonDir, _handDirVec) * Mathf.Deg2Rad;
             offset = _handDirVec.magnitude * Mathf.Cos(angle);
             
-            // Debug.DrawLine(_snappedHandPosition, _snappedHandPosition - transform.up * offset, Color.red);
+            Debug.DrawLine(_snappedHandPosition, _snappedHandPosition - transform.up * offset, Color.red);
             
             if (offset > _limit || offset < -_limit) return;
             
