@@ -393,7 +393,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   offset: 0
-  text: {fileID: 0}
+  text: {fileID: 8524129323583422799}
+  triggerThreshold: 0.5
 --- !u!54 &2368188410674907102
 Rigidbody:
   m_ObjectHideFlags: 0
