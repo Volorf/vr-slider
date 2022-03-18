@@ -29,8 +29,12 @@ public class VRSlider : MonoBehaviour
     private bool _canBeInteracted = false;
     private float _limit;
 
-    private bool _triggerHasBeenPressed = false;
-    private bool _triggerHasBeenReleased = false;
+    private bool _hasBeenPressedOnce = false;
+    private bool _hasBeenPressed = false;
+
+    private bool _hasBeenReleasedOnce = false;
+    private bool _hasBeenReleased = false;
+    
     [SerializeField] [Range(0.0f, 1.0f)] private float triggerThreshold = 0.5f;
 
 
@@ -67,34 +71,49 @@ public class VRSlider : MonoBehaviour
 
     private void Update()
     {
-        OVRInput.Update();
-        // if (OVRInput.GetDown(OVRInput.Touch.PrimaryIndexTrigger, OVRInput.Controller.RTouch)) 
+        // TODO: encapsulate the input functionality in a separate Input class (the class shouldn't know about any input at all)
         
-
-        if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RHand) <= triggerThreshold &&
-            _triggerHasBeenPressed)
+        // Input.GetKeyDown(KeyCode.Space)
+        OVRInput.Update();
+        
+        if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) >= triggerThreshold)
         {
-            _triggerHasBeenReleased = true;
+            if (!_hasBeenPressedOnce)
+            {
+                _hasBeenPressed = true;
+                _hasBeenPressedOnce = true;
+            }
+            else
+            {
+                _hasBeenPressed = false;
+            }
+
+            _hasBeenReleasedOnce = false;
         }
         else
         {
-            _triggerHasBeenReleased = false;
+            if (!_hasBeenReleasedOnce)
+            {
+                _hasBeenReleased = true;
+                _hasBeenReleasedOnce = true;
+            }
+            else
+            {
+                _hasBeenReleased = false;
+            }
+
+            _hasBeenPressedOnce = false;
         }
         
-        _triggerHasBeenPressed = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RHand) >= triggerThreshold;
-        
         // Input.GetKeyDown(KeyCode.Space)
-        
-        if (_triggerHasBeenPressed)
+        if (_hasBeenPressed)
         {
             _tempOffset = 0;
             _snappedHandPosition = _handTransform.position;
         }
         
-        // Input.GetKeyUp(KeyCode.Space)  || 
-        // if (OVRInput.GetUp(OVRInput.Touch.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
-        
-        if (_triggerHasBeenReleased)
+        // Input.GetKeyUp(KeyCode.Space)
+        if (_hasBeenReleased)
         {
             _canBeInteracted = false;
             _tempOffset = 0;
@@ -105,11 +124,11 @@ public class VRSlider : MonoBehaviour
             transform.DOLocalMoveY(0, _dur);
         }
         
-        // if (OVRInput.Get(OVRInput.Touch.PrimaryIndexTrigger, OVRInput.Controller.RTouch) && canBeInteracted)
-        if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RHand) >= triggerThreshold && _canBeInteracted)
+        // Input.GetKey(KeyCode.Space)
+        if (_hasBeenPressedOnce && _canBeInteracted)
         {
             text.text = _counter.ToString();
-            
+
             _handDirVec = Helper.GetHandDirection(_snappedHandPosition, _handTransform.position);
             Debug.DrawLine(_snappedHandPosition, _handTransform.position, Color.blue);
             

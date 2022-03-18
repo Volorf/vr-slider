@@ -5,21 +5,29 @@ using UnityEngine;
 public class CubeManager : MonoBehaviour
 {
     private bool _toggle = true;
+    private MeshRenderer mr;
     void Start()
     {
-        
+        mr = GetComponent<MeshRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.gameObject.SetActive(_toggle);
         OVRInput.Update();
+        mr.enabled = _toggle;
+        
         // if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
         // if(OVRInput.GetDown(OVRInput.Button.PrimaryThumbstick, OVRInput.Controller.RTouch))
-        if(OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.RTouch) >= 0.7f)
+        
+        // OVRInput.Get(OVRInput.Touch.PrimaryIndexTrigger, OVRInput.Controller.RTouch)
+        if(OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) >= 0.5f)
         {
-            _toggle = !_toggle;
+            _toggle = false;
+        }
+        else
+        {
+            _toggle = true;
         }
         
         
