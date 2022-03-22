@@ -90,7 +90,7 @@ TextMesh:
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 72
+  m_FontSize: 48
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: aa8c39fe200994db98e820b0cd3f49c2, type: 3}
@@ -336,7 +336,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: 131155377e8b64a959e488726aeef83c, type: 2}
-  canBeInteracted: 0
   bordersManager: {fileID: 283037214067893973}
   onSliderIn:
     m_PersistentCalls:

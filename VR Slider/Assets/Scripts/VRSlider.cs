@@ -73,47 +73,48 @@ public class VRSlider : MonoBehaviour
     {
         // TODO: encapsulate the input functionality in a separate Input class (the class shouldn't know about any input at all)
         
-        // Input.GetKeyDown(KeyCode.Space)
-        OVRInput.Update();
         
-        if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) >= triggerThreshold)
-        {
-            if (!_hasBeenPressedOnce)
-            {
-                _hasBeenPressed = true;
-                _hasBeenPressedOnce = true;
-            }
-            else
-            {
-                _hasBeenPressed = false;
-            }
-
-            _hasBeenReleasedOnce = false;
-        }
-        else
-        {
-            if (!_hasBeenReleasedOnce)
-            {
-                _hasBeenReleased = true;
-                _hasBeenReleasedOnce = true;
-            }
-            else
-            {
-                _hasBeenReleased = false;
-            }
-
-            _hasBeenPressedOnce = false;
-        }
+        // OVRInput.Update();
+        //
+        // if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) >= triggerThreshold)
+        // {
+        //     if (!_hasBeenPressedOnce)
+        //     {
+        //         _hasBeenPressed = true;
+        //         _hasBeenPressedOnce = true;
+        //     }
+        //     else
+        //     {
+        //         _hasBeenPressed = false;
+        //     }
+        //     
+        //     _hasBeenReleasedOnce = false;
+        // }
+        // else
+        // {
+        //     if (!_hasBeenReleasedOnce)
+        //     {
+        //         _hasBeenReleased = true;
+        //         _hasBeenReleasedOnce = true;
+        //     }
+        //     else
+        //     {
+        //         _hasBeenReleased = false;
+        //     }
+        //     
+        //     _hasBeenPressedOnce = false;
+        // }
         
-        // Input.GetKeyDown(KeyCode.Space)
-        if (_hasBeenPressed)
+        // 
+        // if (_hasBeenPressed)
+        if(Input.GetKeyDown(KeyCode.Space))
         {
             _tempOffset = 0;
             _snappedHandPosition = _handTransform.position;
         }
         
-        // Input.GetKeyUp(KeyCode.Space)
-        if (_hasBeenReleased)
+        // if (_hasBeenReleased)
+        if(Input.GetKeyUp(KeyCode.Space))
         {
             _canBeInteracted = false;
             _tempOffset = 0;
@@ -124,8 +125,9 @@ public class VRSlider : MonoBehaviour
             transform.DOLocalMoveY(0, _dur);
         }
         
-        // Input.GetKey(KeyCode.Space)
-        if (_hasBeenPressedOnce && _canBeInteracted)
+        // 
+        // if (_hasBeenPressedOnce && _canBeInteracted)
+        if(Input.GetKey(KeyCode.Space) && _canBeInteracted)
         {
             text.text = _counter.ToString();
 
