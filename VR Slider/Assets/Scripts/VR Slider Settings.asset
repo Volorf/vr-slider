@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae0c69d2279c4b2d978207ec2a25441, type: 3}
   m_Name: VR Slider Settings
   m_EditorClassIdentifier: 
-  step: 0.4
+  step: 0.2
   dur: 0.5
   snapSpeed: 0.2
   stepCountLimit: 3
