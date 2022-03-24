@@ -981,10 +981,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1180648137370919460, guid: f223de2ba76914375b42314ea42f882a, type: 3}
-      propertyPath: m_Size.x
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 1307377574961131316, guid: f223de2ba76914375b42314ea42f882a, type: 3}
       propertyPath: m_Mesh
       value: 

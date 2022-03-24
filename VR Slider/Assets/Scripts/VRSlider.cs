@@ -67,9 +67,12 @@ public class VRSlider : MonoBehaviour
         if (other.CompareTag("Hand"))
         {
             onSliderOut.Invoke();
+            _tempOffset = 0;
             _canBeInteracted = false;
         }
     }
+    
+    
     
     public void Snap()
     {
@@ -81,72 +84,21 @@ public class VRSlider : MonoBehaviour
     public void Reset()
     {
         _isPressing = false;
-        _canBeInteracted = false;
-        _tempOffset = 0;
+        
+        if (Mathf.Abs(_counter) > 1)
+        { 
+            _canBeInteracted = false;
+            onSliderOut.Invoke();
+        }
     }
 
     private void Update()
     {
-        // TODO: encapsulate the input functionality in a separate Input class (the class shouldn't know about any input at all)
-        
-        
-        // OVRInput.Update();
-        //
-        // if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) >= triggerThreshold)
-        // {
-        //     if (!_hasBeenPressedOnce)
-        //     {
-        //         _hasBeenPressed = true;
-        //         _hasBeenPressedOnce = true;
-        //     }
-        //     else
-        //     {
-        //         _hasBeenPressed = false;
-        //     }
-        //     
-        //     _hasBeenReleasedOnce = false;
-        // }
-        // else
-        // {
-        //     if (!_hasBeenReleasedOnce)
-        //     {
-        //         _hasBeenReleased = true;
-        //         _hasBeenReleasedOnce = true;
-        //     }
-        //     else
-        //     {
-        //         _hasBeenReleased = false;
-        //     }
-        //     
-        //     _hasBeenPressedOnce = false;
-        // }
-        
-        // 
-        // if (_hasBeenPressed)
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            _tempOffset = 0;
-            _snappedHandPosition = _handTransform.position;
-        }
-
-        
-        
-        
-        // if (_hasBeenReleased)
-        if(Input.GetKeyUp(KeyCode.Space))
-        {
-            _canBeInteracted = false;
-            _tempOffset = 0;
-        }
-
         if (!_canBeInteracted)
         {
             transform.DOLocalMoveY(0, _dur);
         }
-        
-        // 
-        // if (_hasBeenPressedOnce && _canBeInteracted)
-        // if(Input.GetKey(KeyCode.Space) && _canBeInteracted)
+
         if(_isPressing && _canBeInteracted)
         {
             text.text = _counter.ToString();
