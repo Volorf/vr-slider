@@ -914,7 +914,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1556239299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -928,6 +928,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerThreshold: 0.5
+  currentMode: 1
+  onTriggerDown:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1806710031}
+        m_TargetAssemblyTypeName: VRSlider, Assembly-CSharp
+        m_MethodName: Snap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerUp:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1806710031}
+        m_TargetAssemblyTypeName: VRSlider, Assembly-CSharp
+        m_MethodName: Reset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1556239300
 Transform:
   m_ObjectHideFlags: 0
@@ -1040,3 +1071,14 @@ PrefabInstance:
       objectReference: {fileID: -8374849331660108554, guid: e3509b4785a8340ed8f29a1a54115ad3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f223de2ba76914375b42314ea42f882a, type: 3}
+--- !u!114 &1806710031 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5495784066279466551, guid: f223de2ba76914375b42314ea42f882a, type: 3}
+  m_PrefabInstance: {fileID: 1806710030}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 315477755e2f84af4841e240d6d25cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

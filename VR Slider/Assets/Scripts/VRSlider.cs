@@ -34,6 +34,8 @@ public class VRSlider : MonoBehaviour
 
     private bool _hasBeenReleasedOnce = false;
     private bool _hasBeenReleased = false;
+
+    private bool _isPressing = false;
     
     [SerializeField] [Range(0.0f, 1.0f)] private float triggerThreshold = 0.5f;
 
@@ -67,6 +69,20 @@ public class VRSlider : MonoBehaviour
             onSliderOut.Invoke();
             _canBeInteracted = false;
         }
+    }
+    
+    public void Snap()
+    {
+        _isPressing = true;
+        _tempOffset = 0;
+        _snappedHandPosition = _handTransform.position;
+    }
+
+    public void Reset()
+    {
+        _isPressing = false;
+        _canBeInteracted = false;
+        _tempOffset = 0;
     }
 
     private void Update()
@@ -112,6 +128,9 @@ public class VRSlider : MonoBehaviour
             _tempOffset = 0;
             _snappedHandPosition = _handTransform.position;
         }
+
+        
+        
         
         // if (_hasBeenReleased)
         if(Input.GetKeyUp(KeyCode.Space))
@@ -127,7 +146,8 @@ public class VRSlider : MonoBehaviour
         
         // 
         // if (_hasBeenPressedOnce && _canBeInteracted)
-        if(Input.GetKey(KeyCode.Space) && _canBeInteracted)
+        // if(Input.GetKey(KeyCode.Space) && _canBeInteracted)
+        if(_isPressing && _canBeInteracted)
         {
             text.text = _counter.ToString();
 
