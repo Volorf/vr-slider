@@ -29,17 +29,8 @@ public class VRSlider : MonoBehaviour
     private bool _canBeInteracted = false;
     private float _limit;
 
-    private bool _hasBeenPressedOnce = false;
-    private bool _hasBeenPressed = false;
-
-    private bool _hasBeenReleasedOnce = false;
-    private bool _hasBeenReleased = false;
-
     private bool _isPressing = false;
     
-    [SerializeField] [Range(0.0f, 1.0f)] private float triggerThreshold = 0.5f;
-
-
     private void Start()
     {
         _counterStep = settings.step;
@@ -71,8 +62,6 @@ public class VRSlider : MonoBehaviour
             _canBeInteracted = false;
         }
     }
-    
-    
     
     public void Snap()
     {
