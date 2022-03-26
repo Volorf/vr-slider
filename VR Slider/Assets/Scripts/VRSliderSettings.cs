@@ -11,4 +11,5 @@ public class VRSliderSettings : ScriptableObject
     public int stepCountLimit;
     public float expendDur;
     public float collapseDur;
+    public int counter;
 }

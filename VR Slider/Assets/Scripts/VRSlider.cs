@@ -23,7 +23,7 @@ public class VRSlider : MonoBehaviour
 
     private float _tempOffset = 0;
     private float _counterStep;
-    private int _counter = 0;
+    private int _counter;
     private float _dur;
     
     private bool _canBeInteracted = false;
@@ -33,9 +33,10 @@ public class VRSlider : MonoBehaviour
     
     private void Start()
     {
+        _counter = settings.counter;
         _counterStep = settings.step;
         _dur = settings.dur;
-        text.text = "0";
+        text.text = _counter.ToString();
 
         _limit = settings.step * (settings.stepCountLimit + 1);
     }

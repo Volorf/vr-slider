@@ -18,3 +18,4 @@ MonoBehaviour:
   stepCountLimit: 3
   expendDur: 0.2
   collapseDur: 0.5
+  counter: 17
