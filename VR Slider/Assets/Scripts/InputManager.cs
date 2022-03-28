@@ -8,6 +8,7 @@ public enum InputMode
 }
 
 // TODO: Implement haptic feedback methods
+// https://developer.oculus.com/documentation/unity/unity-haptics/
 
 public class InputManager : MonoBehaviour
 {
