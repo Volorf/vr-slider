@@ -11,6 +11,9 @@ public class VRSlider : MonoBehaviour
     public UnityEvent onSliderIn;
     public UnityEvent onSliderOut;
 
+    public UnityEvent onCounterIncreased;
+    public UnityEvent onCounterDescreased;
+
     public float offset;
 
     [SerializeField] private TextMesh text;
@@ -108,6 +111,8 @@ public class VRSlider : MonoBehaviour
                 _counter--;
                 _tempOffset += _counterStep;
                 bordersManager.Up();
+                // OVRInput.SetControllerVibration(0.1f, 0.5f, OVRInput.Controller.RTouch);
+                onCounterDescreased.Invoke();
             }
             
             if (offset <= _tempOffset - _counterStep)
@@ -115,6 +120,8 @@ public class VRSlider : MonoBehaviour
                 _counter++;
                 _tempOffset -= _counterStep;
                 bordersManager.Down();
+                // OVRInput.SetControllerVibration(0.1f, 0.5f, OVRInput.Controller.RTouch);
+                onCounterIncreased.Invoke();
             }
             
             transform.localPosition = new Vector3(0, -offset, 0);

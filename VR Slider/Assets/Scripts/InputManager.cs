@@ -7,6 +7,8 @@ public enum InputMode
     Desktop
 }
 
+// TODO: Implement haptic feedback methods
+
 public class InputManager : MonoBehaviour
 {
     [Range(0.0f, 1.0f)] public float triggerThreshold = 0.5f;
