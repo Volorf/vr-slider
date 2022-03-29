@@ -3,36 +3,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class VibroSetup
+{
+    public OVRInput.Controller controller;
+    public bool isVibrating = false;
+    public VibroSetup(OVRInput.Controller c)
+    {
+        controller = c;
+    }
+}
 public class FXManager : MonoBehaviour
 {
     [SerializeField] private AudioClip audioClip;
     private AudioSource _audio;
 
     private bool _isRTouchVibrating = false;
-    
-    // private static FXManager _instance;
-    // public static FXManager Instance => _instance;
+
+    private VibroSetup _rightVibroSetup;
 
     private void Awake()
     {
-        // if (_instance != null && _instance != this)
-        // {
-        //     Destroy(this.gameObject);
-        // }
-        // else
-        // {
-        //     _instance = this;
-        // }
         _audio = GetComponent<AudioSource>();
     }
-    
-    
 
-    public void VibrateLeftHand() => Vibrate(OVRInput.Controller.LTouch); 
-    public void VibrateRightHand() => Vibrate(OVRInput.Controller.RTouch);
+    private void Start()
+    {
+        _rightVibroSetup = new VibroSetup(OVRInput.Controller.RTouch);
+    }
 
 
-    private void Vibrate(OVRInput.Controller controller)
+    // public void VibrateLeftHand() => Vibrate(OVRInput.Controller.LTouch); 
+    // public void VibrateRightHand() => Vibrate(OVRInput.Controller.RTouch);
+
+
+    public void Vibrate(OVRInput.Controller controller)
     {
         OVRHapticsClip hapticClip = new OVRHapticsClip();
 
@@ -48,19 +52,15 @@ public class FXManager : MonoBehaviour
         }
         if (controller == OVRInput.Controller.RTouch)
         {
-            // OVRHaptics.RightChannel.Preempt(hapticClip);
-            // OVRHaptics.Channels[0].Mix(hapticClip);
-            // OVRHaptics.Channels[1].Mix(hapticClip);
-            if(_isRTouchVibrating) return;
-            StartCoroutine(nameof(PlayVibroR));
+            if(_rightVibroSetup.isVibrating) return;
+            StartCoroutine(nameof(PlayVibro), _rightVibroSetup);
         }
-        // OVRInput.SetControllerVibration(1.0f, 1.0f, controller);
     }
 
-    private IEnumerator PlayVibroR()
+    private IEnumerator PlayVibro(VibroSetup vibroSetup)
     {
         _audio.PlayOneShot(audioClip);
-        _isRTouchVibrating = true;
+        vibroSetup.isVibrating = true;
         float time = 0.2f;
         float timeCounter = 0f;
         int counter = 0;
@@ -69,11 +69,11 @@ public class FXManager : MonoBehaviour
         {
             if (counter % 3 == 0)
             {
-                OVRInput.SetControllerVibration(1.0f, 1.0f, OVRInput.Controller.RTouch);
+                OVRInput.SetControllerVibration(1.0f, 1.0f, vibroSetup.controller);
             }
             else
             {
-                OVRInput.SetControllerVibration(0f, 0f, OVRInput.Controller.RTouch);
+                OVRInput.SetControllerVibration(0f, 0f, vibroSetup.controller);
             }
 
             counter++;
@@ -81,6 +81,6 @@ public class FXManager : MonoBehaviour
             yield return null;
         }
 
-        _isRTouchVibrating = false;
+        vibroSetup.isVibrating = false;
     }
 }

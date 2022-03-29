@@ -33,6 +33,8 @@ public class VRSlider : MonoBehaviour
     private float _limit;
 
     private bool _isPressing = false;
+
+    private VRHand _interactingHand;
     
     private void Start()
     {
@@ -50,6 +52,8 @@ public class VRSlider : MonoBehaviour
         {
             onSliderIn.Invoke();
             _canBeInteracted = true;
+
+            _interactingHand = other.gameObject.GetComponent<WhichHand>().hand;
             
             _handTransform = other.transform;
             Transform buttonTransform = transform;
