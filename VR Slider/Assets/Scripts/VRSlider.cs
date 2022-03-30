@@ -1,6 +1,9 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
+
+[Serializable] public class HandEvent : UnityEvent<VRHand> {}
 
 public class VRSlider : MonoBehaviour
 {
@@ -11,8 +14,8 @@ public class VRSlider : MonoBehaviour
     public UnityEvent onSliderIn;
     public UnityEvent onSliderOut;
 
-    public UnityEvent onCounterIncreased;
-    public UnityEvent onCounterDescreased;
+    public HandEvent onCounterIncreased;
+    public HandEvent onCounterDescreased;
 
     public float offset;
 
@@ -116,7 +119,7 @@ public class VRSlider : MonoBehaviour
                 _tempOffset += _counterStep;
                 bordersManager.Up();
                 // OVRInput.SetControllerVibration(0.1f, 0.5f, OVRInput.Controller.RTouch);
-                onCounterDescreased.Invoke();
+                onCounterDescreased.Invoke(_interactingHand);
             }
             
             if (offset <= _tempOffset - _counterStep)
@@ -125,7 +128,7 @@ public class VRSlider : MonoBehaviour
                 _tempOffset -= _counterStep;
                 bordersManager.Down();
                 // OVRInput.SetControllerVibration(0.1f, 0.5f, OVRInput.Controller.RTouch);
-                onCounterIncreased.Invoke();
+                onCounterIncreased.Invoke(_interactingHand);
             }
             
             transform.localPosition = new Vector3(0, -offset, 0);

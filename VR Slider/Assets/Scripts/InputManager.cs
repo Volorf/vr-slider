@@ -36,8 +36,11 @@ public class InputManager : MonoBehaviour
         if (currentMode == InputMode.VR)
         {
             OVRInput.Update();
-        
-            if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) >= triggerThreshold)
+
+            float rightIndexTrigger = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch);
+            float leftIndexTrigger = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch);
+            
+            if (rightIndexTrigger >= triggerThreshold || leftIndexTrigger >= triggerThreshold)
             {
                 if (!_hasBeenPressedOnce)
                 {

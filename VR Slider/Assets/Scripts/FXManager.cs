@@ -20,6 +20,7 @@ public class FXManager : MonoBehaviour
     private bool _isRTouchVibrating = false;
 
     private VibroSetup _rightVibroSetup;
+    private VibroSetup _leftVibroSetup;
 
     private void Awake()
     {
@@ -29,6 +30,7 @@ public class FXManager : MonoBehaviour
     private void Start()
     {
         _rightVibroSetup = new VibroSetup(OVRInput.Controller.RTouch);
+        _leftVibroSetup = new VibroSetup(OVRInput.Controller.LTouch);
     }
 
 
@@ -36,21 +38,22 @@ public class FXManager : MonoBehaviour
     // public void VibrateRightHand() => Vibrate(OVRInput.Controller.RTouch);
 
 
-    public void Vibrate(OVRInput.Controller controller)
+    public void Vibrate(VRHand vrHand)
     {
-        OVRHapticsClip hapticClip = new OVRHapticsClip();
-
-        for (int i = 0; i < 100; i++)
-        {
-            hapticClip.WriteSample(i % 3 == 0 ? (byte) 0 : (byte) 200);
-        }
+        // OVRHapticsClip hapticClip = new OVRHapticsClip();
+        //
+        // for (int i = 0; i < 100; i++)
+        // {
+        //     hapticClip.WriteSample(i % 3 == 0 ? (byte) 0 : (byte) 200);
+        // }
         
-        if (controller == OVRInput.Controller.LTouch)
+        if (vrHand == VRHand.Left)
         {
-            OVRHaptics.LeftChannel.Preempt(hapticClip);
+            if(_leftVibroSetup.isVibrating) return;
+            StartCoroutine(nameof(PlayVibro), _leftVibroSetup);
             
         }
-        if (controller == OVRInput.Controller.RTouch)
+        if (vrHand == VRHand.Right)
         {
             if(_rightVibroSetup.isVibrating) return;
             StartCoroutine(nameof(PlayVibro), _rightVibroSetup);
