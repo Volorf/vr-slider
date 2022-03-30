@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 674893389719281193}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.050000004, z: 0.10000001}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 898992360565272350}
@@ -90,7 +90,7 @@ TextMesh:
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 48
+  m_FontSize: 240
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: aa8c39fe200994db98e820b0cd3f49c2, type: 3}
@@ -391,9 +391,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onCounterIncreased:
+    m_PersistentCalls:
+      m_Calls: []
+  onCounterDescreased:
+    m_PersistentCalls:
+      m_Calls: []
   offset: 0
   text: {fileID: 8524129323583422799}
-  triggerThreshold: 0.5
 --- !u!54 &2368188410674907102
 Rigidbody:
   m_ObjectHideFlags: 0
