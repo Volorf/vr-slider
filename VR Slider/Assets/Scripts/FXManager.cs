@@ -42,7 +42,7 @@ public class FXManager : MonoBehaviour
 
         for (int i = 0; i < 100; i++)
         {
-            hapticClip.WriteSample(i % 3 == 0 ? (byte) 0 : (byte) 100);
+            hapticClip.WriteSample(i % 3 == 0 ? (byte) 0 : (byte) 200);
         }
         
         if (controller == OVRInput.Controller.LTouch)

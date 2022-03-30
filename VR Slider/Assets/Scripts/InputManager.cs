@@ -66,8 +66,7 @@ public class InputManager : MonoBehaviour
                 _hasBeenPressedOnce = false;
             }
         }
-        
-        
+
         if (_hasBeenPressed) onTriggerDown.Invoke();
         if (_hasBeenReleased) onTriggerUp.Invoke();
     }
