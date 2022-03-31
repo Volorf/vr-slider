@@ -77,8 +77,8 @@ Material:
     - _mult: 1
     - _pwer: 1
     m_Colors:
-    - _Bottom: {r: 0.32368025, g: 0.20283017, b: 1, a: 1}
+    - _Bottom: {r: 0.06666667, g: 0.06666667, b: 0.06666667, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Top: {r: 0.32368025, g: 0.20283017, b: 1, a: 1}
+    - _Top: {r: 0.06666667, g: 0.06666667, b: 0.06666667, a: 1}
   m_BuildTextureStacks: []
