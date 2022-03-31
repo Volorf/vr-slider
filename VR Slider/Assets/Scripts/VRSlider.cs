@@ -56,7 +56,10 @@ public class VRSlider : MonoBehaviour
             onSliderIn.Invoke();
             _canBeInteracted = true;
 
-            _interactingHand = other.gameObject.GetComponent<WhichHand>().hand;
+            if (other.gameObject.TryGetComponent(out WhichHand whichHand))
+            {
+                _interactingHand = whichHand.hand;
+            }
             
             _handTransform = other.transform;
             Transform buttonTransform = transform;
@@ -78,7 +81,7 @@ public class VRSlider : MonoBehaviour
     {
         _isPressing = true;
         _tempOffset = 0;
-        _snappedHandPosition = _handTransform.position;
+        _snappedHandPosition = _handTransform.position; 
     }
 
     public void Reset()

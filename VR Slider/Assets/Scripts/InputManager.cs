@@ -33,6 +33,9 @@ public class InputManager : MonoBehaviour
             _hasBeenReleased = Input.GetKeyUp(KeyCode.Space);
         }
 
+        if (_hasBeenPressed) print("hasbeenpressed");
+        if (_hasBeenReleased) print("hasbeenreleased");
+
         if (currentMode == InputMode.VR)
         {
             OVRInput.Update();

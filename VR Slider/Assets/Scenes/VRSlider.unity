@@ -892,7 +892,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &1376743058
 AudioListener:
   m_ObjectHideFlags: 0
@@ -972,13 +972,14 @@ GameObject:
   - component: {fileID: 1387234862}
   - component: {fileID: 1387234861}
   - component: {fileID: 1387234866}
+  - component: {fileID: 1387234867}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!135 &1387234861
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1069,6 +1070,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6646772e893804122b2cfbda20bd8d69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1387234867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387234860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840acd70cae014cb7869b9146e116611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand: 1
 --- !u!1001 &1426333602
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1178,7 +1192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_RootOrder
@@ -1268,7 +1282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerThreshold: 0.5
-  currentMode: 0
+  currentMode: 1
   onTriggerDown:
     m_PersistentCalls:
       m_Calls:
