@@ -84,8 +84,7 @@ public class FXManager : MonoBehaviour
         float time = 0.2f;
         float timeCounter = 0f;
         int counter = 0;
-        
-        
+
         while (timeCounter < time)
         {
             if (counter % 3 == 0)

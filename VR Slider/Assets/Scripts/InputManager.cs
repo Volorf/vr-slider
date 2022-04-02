@@ -7,8 +7,7 @@ public enum InputMode
     Desktop
 }
 
-// TODO: Implement haptic feedback methods
-// https://developer.oculus.com/documentation/unity/unity-haptics/
+// TODO: Control Input mode programmatically — check VR or Desktop + switch according gameobjects
 
 public class InputManager : MonoBehaviour
 {

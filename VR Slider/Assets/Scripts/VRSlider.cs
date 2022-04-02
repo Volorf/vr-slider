@@ -4,7 +4,7 @@ using UnityEngine.Events;
 using DG.Tweening;
 
 [Serializable] public class HandEvent : UnityEvent<VRHand> {}
-
+// TODO: Implement — Hold extreme state to increse the speed of counting (what?)
 public class VRSlider : MonoBehaviour
 {
     public VRSliderSettings settings;
