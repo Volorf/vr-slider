@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using DG.Tweening;
 
 [Serializable] public class HandEvent : UnityEvent<VRHand> {}
-// TODO: Implement — Hold extreme state to increse the speed of counting (what?)
+
 public class VRSlider : MonoBehaviour
 {
     public VRSliderSettings settings;
@@ -114,14 +114,13 @@ public class VRSlider : MonoBehaviour
             text.text = _counter.ToString();
 
             _handDirVec = Helper.GetHandDirection(_snappedHandPosition, _handTransform.position);
-            Debug.DrawLine(_snappedHandPosition, _handTransform.position, Color.blue);
+            
+            // Debug.DrawLine(_snappedHandPosition, _handTransform.position, Color.blue);
             
             float angle = Vector3.Angle(_snappedButtonDir, _handDirVec) * Mathf.Deg2Rad;
             offset = _handDirVec.magnitude * Mathf.Cos(angle);
             
-            Debug.DrawLine(_snappedHandPosition, _snappedHandPosition - transform.up * offset, Color.red);
-            
-            // if (offset > _limit || offset < -_limit) return;
+            // Debug.DrawLine(_snappedHandPosition, _snappedHandPosition - transform.up * offset, Color.red);
 
             if (offset > _limit)
             {
@@ -131,10 +130,6 @@ public class VRSlider : MonoBehaviour
                     _isHoldIncreasingRunning = true;
                 }
                 return;
-            }
-            else
-            {
-                // StopCoroutine(nameof(IncreaseCounter));
             }
 
             if (offset < -_limit)
@@ -146,18 +141,13 @@ public class VRSlider : MonoBehaviour
                 }
                 return;
             }
-            else
-            {
-                // StopCoroutine(nameof(IncreaseCounter));
-            }
-            
-            
+
+
             if (offset >= _tempOffset + _counterStep)
             {
                 _counter--;
                 _tempOffset += _counterStep;
                 bordersManager.Up();
-                // OVRInput.SetControllerVibration(0.1f, 0.5f, OVRInput.Controller.RTouch);
                 onCounterDescreased.Invoke(_interactingHand);
                 StopCoroutine(nameof(IncreaseCounter));
             }
@@ -167,10 +157,8 @@ public class VRSlider : MonoBehaviour
                 _counter++;
                 _tempOffset -= _counterStep;
                 bordersManager.Down();
-                // OVRInput.SetControllerVibration(0.1f, 0.5f, OVRInput.Controller.RTouch);
                 onCounterIncreased.Invoke(_interactingHand);
                 StopCoroutine(nameof(IncreaseCounter));
-                
             }
 
             transform.localPosition = new Vector3(0, -offset, 0);
@@ -187,8 +175,7 @@ public class VRSlider : MonoBehaviour
         float time = 0f;
         int timeCounter = 0;
         
-        
-        while (true)
+        while(true)
         {
             if (time >= timeLimit)
             {
@@ -206,11 +193,6 @@ public class VRSlider : MonoBehaviour
             {
                 timeLimit = 0.05f;
             }
-
-            // if (timeCounter == 12)
-            // {
-            //     timeLimit /= 2;
-            // }
 
             time += Time.deltaTime;
             
