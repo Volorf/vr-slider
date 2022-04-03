@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
@@ -37,6 +38,8 @@ public class VRSlider : MonoBehaviour
 
     private bool _isPressing = false;
 
+    private bool _isHoldIncreasingRunning = false;
+
     private VRHand _interactingHand;
     
     private void Start()
@@ -74,6 +77,8 @@ public class VRSlider : MonoBehaviour
             onSliderOut.Invoke();
             _tempOffset = 0;
             _canBeInteracted = false;
+            _isHoldIncreasingRunning = false;
+            StopCoroutine(nameof(IncreaseCounter));
         }
     }
     
@@ -87,6 +92,8 @@ public class VRSlider : MonoBehaviour
     public void Reset()
     {
         _isPressing = false;
+        _isHoldIncreasingRunning = false;
+        StopCoroutine(nameof(IncreaseCounter));
         
         if (Mathf.Abs(_counter) > 1)
         { 
@@ -114,7 +121,36 @@ public class VRSlider : MonoBehaviour
             
             Debug.DrawLine(_snappedHandPosition, _snappedHandPosition - transform.up * offset, Color.red);
             
-            if (offset > _limit || offset < -_limit) return;
+            // if (offset > _limit || offset < -_limit) return;
+
+            if (offset > _limit)
+            {
+                if (!_isHoldIncreasingRunning)
+                {
+                    StartCoroutine(nameof(IncreaseCounter), -1);
+                    _isHoldIncreasingRunning = true;
+                }
+                return;
+            }
+            else
+            {
+                // StopCoroutine(nameof(IncreaseCounter));
+            }
+
+            if (offset < -_limit)
+            {
+                if (!_isHoldIncreasingRunning)
+                {
+                    StartCoroutine(nameof(IncreaseCounter), 1);
+                    _isHoldIncreasingRunning = true;
+                }
+                return;
+            }
+            else
+            {
+                // StopCoroutine(nameof(IncreaseCounter));
+            }
+            
             
             if (offset >= _tempOffset + _counterStep)
             {
@@ -123,6 +159,7 @@ public class VRSlider : MonoBehaviour
                 bordersManager.Up();
                 // OVRInput.SetControllerVibration(0.1f, 0.5f, OVRInput.Controller.RTouch);
                 onCounterDescreased.Invoke(_interactingHand);
+                StopCoroutine(nameof(IncreaseCounter));
             }
             
             if (offset <= _tempOffset - _counterStep)
@@ -132,13 +169,52 @@ public class VRSlider : MonoBehaviour
                 bordersManager.Down();
                 // OVRInput.SetControllerVibration(0.1f, 0.5f, OVRInput.Controller.RTouch);
                 onCounterIncreased.Invoke(_interactingHand);
+                StopCoroutine(nameof(IncreaseCounter));
+                
             }
-            
+
             transform.localPosition = new Vector3(0, -offset, 0);
         }
         else
         {
             _tempOffset = 0;
+        }
+    }
+
+    private IEnumerator IncreaseCounter(int n)
+    {
+        float timeLimit = 0.5f;
+        float time = 0f;
+        int timeCounter = 0;
+        
+        
+        while (true)
+        {
+            if (time >= timeLimit)
+            {
+                time = 0f;
+                _counter += n;
+                timeCounter++;
+            }
+
+            if (timeCounter == 3)
+            {
+                timeLimit = 0.1f;
+            }
+            
+            if (timeCounter == 16)
+            {
+                timeLimit = 0.05f;
+            }
+
+            // if (timeCounter == 12)
+            // {
+            //     timeLimit /= 2;
+            // }
+
+            time += Time.deltaTime;
+            
+            yield return null;
         }
     }
 }
