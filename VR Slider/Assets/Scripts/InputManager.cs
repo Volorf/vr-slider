@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+// TODO: Add hand tracking
 public enum InputMode
 {
     VR,
