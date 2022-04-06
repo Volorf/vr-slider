@@ -15,7 +15,7 @@ Unity 3D (C# + Oculus Integration + DOTween) prototype of [this interaction conc
 
 ![VR Slider Prototype [Touch Controller, Direct Manipulation]](/demo1.gif)
 
-In this version, you can directly interact with the UI element via VR Controllers. There are a couple of things you need to keep in mind when you use such interaction mechanics:
+In this version, you can directly interact with the UI element via VR Controllers. There are a couple of things you need to keep in mind when you use such interaction mechanics.
 
 **Pros:**
 
