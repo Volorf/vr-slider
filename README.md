@@ -17,17 +17,17 @@ Unity 3D (C# + Oculus Integration + DOTween) prototype of [this interaction conc
 
 In this version, you can directly interact with the UI element via VR Controllers. There are a couple of things you need to keep in mind when you use such interaction mechanics.
 
-**Pros:**
+**Pros**
 
 - It's super fun and feels like a real thing (immersive).
 - Natural affordance. The mental model of real-world things perfectly matches pushing and pulling action with decreasing and increasing the counter (supported by haptic feedback). 
 
-**Cons:**
+**Cons**
 
 - The interaction mechanics are heavily restricted by arm movement and reliability of your back. Personally, I have no problems with the interactions, but I'm quite sure that people with different heights and body types will struggle with this version of the interaction. Potentially,  we can fix the issue by finding an optimal form factor for the UI — element sizes and margins (research needed) to decrease the dependency on body movement (respect people's stamina).
 
 
-### Notes:
+### Notes
 - Maybe, it's worth adding a visual UI state for the hold-to-accelerate-the-counter action (the haptics works fine).
 - Color coding for the hover state (emission)?
 
