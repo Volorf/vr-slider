@@ -27,7 +27,7 @@ In this version, you can directly interact with the UI element via VR Controller
 - The interaction mechanics are heavily restricted by arm movement and reliability of your back. Personally, I have no problems with the interactions, but I'm quite sure that people with different heights and body types will struggle with this version of the interaction. Potentially,  we can fix the issue by finding an optimal form factor for the UI — element sizes and margins (research needed) to decrease the dependency on body movement (respect people's stamina).
 
 
-## Notes:
+### Notes:
 - Maybe, it's worth adding a visual UI state for the hold-to-accelerate-the-counter action (the haptics works fine).
 - Color coding for the hover state (emission)?
 
