@@ -175,7 +175,7 @@ public class VRSlider : MonoBehaviour
         float time = 0f;
         int timeCounter = 0;
         
-        while(true)
+        while (true)
         {
             if (time >= timeLimit)
             {
@@ -184,14 +184,14 @@ public class VRSlider : MonoBehaviour
                 timeCounter++;
             }
 
-            if (timeCounter == 3)
+            switch (timeCounter)
             {
-                timeLimit = 0.1f;
-            }
-            
-            if (timeCounter == 16)
-            {
-                timeLimit = 0.05f;
+                case 3:
+                    timeLimit = 0.1f;
+                    break;
+                case 16:
+                    timeLimit = 0.05f;
+                    break;
             }
 
             time += Time.deltaTime;
