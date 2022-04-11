@@ -7,22 +7,24 @@ public class ButtonColorChanger : MonoBehaviour
     [SerializeField] private Color activeColor;
     [SerializeField] private Color normalColor;
 
-    private MeshRenderer _renderer;
+    [SerializeField] private MeshRenderer renderer;
+    [SerializeField] private TextMesh textMesh;
     void Start()
     {
-        _renderer = GetComponent<MeshRenderer>();
         SetNormalColor();
     }
 
     public void SetActiveColor()
     {
-        _renderer.material.color = activeColor;
-        print("set active color");
+        renderer.material.color = activeColor;
+        textMesh.color = activeColor;
+        // print("set active color");
     } 
 
     public void SetNormalColor()
     {
-        _renderer.material.color =  normalColor;
-        print("set normal color");
+        renderer.material.color =  normalColor;
+        textMesh.color = normalColor;
+        // print("set normal color");
     }
 }

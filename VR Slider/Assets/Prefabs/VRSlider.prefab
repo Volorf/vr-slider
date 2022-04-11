@@ -96,7 +96,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: aa8c39fe200994db98e820b0cd3f49c2, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4281545523
 --- !u!1 &723540465661289792
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,8 +545,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8109dd57c95c04e1d9fa83f38181f9b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeColor: {r: 1, g: 1, b: 1, a: 1}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  activeColor: {r: 1, g: 0.23113209, b: 0.23113209, a: 1}
+  normalColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+  renderer: {fileID: 996296529628176898}
+  textMesh: {fileID: 8524129323583422799}
 --- !u!1001 &252562379675593688
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,6 +6,8 @@ using DG.Tweening;
 
 [Serializable] public class HandEvent : UnityEvent<VRHand> {}
 
+// TODO: fix a bug with interacting animation via collision exit
+
 public class VRSlider : MonoBehaviour
 {
     public VRSliderSettings settings;
