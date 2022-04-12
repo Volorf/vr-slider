@@ -5,13 +5,19 @@ using UnityEngine.Events;
 public enum InputMode
 {
     VR,
-    Desktop
+    Desktop,
+    Hands
 }
 
 // TODO: Control Input mode programmatically — check VR or Desktop + switch according gameobjects
 
 public class InputManager : MonoBehaviour
 {
+    [SerializeField] private OVRHand rightHand;
+    [SerializeField] private OVRHand leftHand;
+
+    private bool _isPrightIndexFingerPinching = false;
+    
     [Range(0.0f, 1.0f)] public float triggerThreshold = 0.5f;
 
     public InputMode currentMode = InputMode.Desktop;
@@ -71,6 +77,10 @@ public class InputManager : MonoBehaviour
 
                 _hasBeenPressedOnce = false;
             }
+        }
+
+        if (currentMode == InputMode.Hands)
+        {
         }
 
         if (_hasBeenPressed) onTriggerDown.Invoke();
