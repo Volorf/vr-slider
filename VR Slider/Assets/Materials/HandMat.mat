@@ -186,10 +186,10 @@ Material:
     - __dummy__: 0
     - __outline_gui_dummy__: 0
     m_Colors:
-    - _BaseColor: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
+    - _BaseColor: {r: 0.93333334, g: 0.93333334, b: 0.93333334, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     - _MatCapColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 0.066037714, g: 0.066037714, b: 0.066037714, a: 1}
     - _ReflectionColor: {r: 1, g: 1, b: 1, a: 1}

@@ -15,9 +15,9 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.93333334, g: 0.93333334, b: 0.93333334, a: 1}
+  m_FogColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.1
+  m_FogDensity: 0.05
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.85498124, g: 0.85498124, b: 0.85498124, a: 1}
+  m_IndirectSpecularColor: {r: 0.91308534, g: 0.91308534, b: 0.91308534, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -180,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114392993255165844, guid: 835e735ca71bf78459fb2cababd74112, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114567484643301796, guid: 835e735ca71bf78459fb2cababd74112, type: 3}
       propertyPath: _enablePhysicsCapsules
@@ -357,6 +357,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Hand
       objectReference: {fileID: 0}
+    - target: {fileID: 1983321904398200, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: m_TagString
+      value: Hand
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
 --- !u!1 &499605226 stripped
@@ -477,7 +481,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &781469847
 Light:
   m_ObjectHideFlags: 0
@@ -490,7 +494,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.75
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1516,7 +1520,7 @@ MonoBehaviour:
   rightHand: {fileID: 1025785933}
   leftHand: {fileID: 1209402256}
   triggerThreshold: 0.5
-  currentMode: 0
+  currentMode: 2
   onTriggerDown:
     m_PersistentCalls:
       m_Calls:
