@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
+using TMPro;
 
 [Serializable] public class HandEvent : UnityEvent<VRHand> {}
 
@@ -23,6 +24,7 @@ public class VRSlider : MonoBehaviour
     public float offset;
 
     [SerializeField] private TextMesh text;
+    // [SerializeField] private TextMeshProUGUI text;
     
     private Vector3 _snappedHandPosition;
     private Vector3 _snappedButtonDir;

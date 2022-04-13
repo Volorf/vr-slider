@@ -25,10 +25,6 @@ public class BorderMover : MonoBehaviour
         _offset = settings.step * (direction == Direction.Up ? 1f : -1f);
         _dur = settings.expendDur;
     }
-    public void Collapse()
-    {
-        // transform.DOLocalMoveY(0f, _dur).OnComplete(CallChainCollapse);
-    }
 
     public void Expand()
     {
@@ -43,5 +39,10 @@ public class BorderMover : MonoBehaviour
     private void CallChainExpand()
     {
         chainExpand.Invoke();
+    }
+    
+    public void Collapse()
+    {
+        // transform.DOLocalMoveY(0f, _dur).OnComplete(CallChainCollapse);
     }
 }
