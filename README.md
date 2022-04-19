@@ -1,6 +1,6 @@
 # VR Slider
 
-Unity 3D (C# + Oculus Integration + DOTween) prototype of [this interaction concept](https://dribbble.com/shots/16776679-Meta-Slider).
+Unity 3D (C# + Oculus Integration + DOTween) prototypes of [this interaction concept](https://dribbble.com/shots/16776679-Meta-Slider).
 
 **Direct Manipulation:**
 - ✅ [Touch Controller](https://dribbble.com/shots/17942856-VR-Slider-Prototype-Touch-Controller-Direct-Manipulation)
