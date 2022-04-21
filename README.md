@@ -1,10 +1,10 @@
 # VR Slider
 
-Unity 3D (C# + Oculus Integration + DOTween) prototype of [this interaction concept](https://dribbble.com/shots/16776679-Meta-Slider).
+Unity 3D (C# + Oculus Integration + DOTween) prototypes of [this interaction concept](https://dribbble.com/shots/16776679-Meta-Slider).
 
 **Direct Manipulation:**
-- ✅ Touch Controller
-- 💡 Virtual Hands
+- ✅ [Touch Controller](https://dribbble.com/shots/17942856-VR-Slider-Prototype-Touch-Controller-Direct-Manipulation)
+- ✅ [Virtual Hands]()
 
 **Pointer:**
 - 💡 Touch Controller
@@ -30,6 +30,46 @@ In this version, you can directly interact with the UI element via VR Controller
 ### Notes
 - Maybe, it's worth adding a visual UI state for the hold-to-accelerate-the-counter action (the haptics works fine).
 - Color coding for the hover state (emission)?
+
+
+## Virtual Hands. Direct Manipulation
+
+![VR Slider Prototype [Virtual Hands, Direct Manipulation]](/demo2.gif)
+
+In this version, I used hand tracking as input. Pinching feels very natural but the lack of tactile feedback increases the number of cognitive efforts you spend to successfully interact with it: there is no haptic feedback; slow movement tracking; and low precision.
+
+**Pros:**
+— Fun.
+
+**Cons:**
+— Slow and low.
+
+Can be used for video game cases, but for casual-routine apps accuracy and precision of hands-based interactions are too low at the moment, which makes it useless for professional usage. 
+
+# VR Slider: Hands Tracking. Direct Manipulation
+
+In this version, I used hand tracking as input. Pinching feels very natural but the lack of tactile feedback increases the number of cognitive efforts you spend to successfully interact with it: there is no haptic feedback; slow movement tracking; and low precision.
+
+**Pros:**
+— Fun
+
+**Cons:**
+— Slow and low
+— Restricted by body movement (arms, back)
+
+Can be used for video game cases, but for casual-routine apps the accuracy and precision of hands-based interactions are too low at the moment, which makes it useless for professional usage. 
+
+Here is a link to the Unity project [VR Hands branch] — https://github.com/Volorf/vr-slider/tree/virtual-hands-direct-manipulation-implementation
+
+Video is captured on Quest 2.
+
+**Direct Manipulation**
+✅ [Touch Controller](https://dribbble.com/shots/17942856-VR-Slider-Prototype-Touch-Controller-Direct-Manipulation)
+✅ [Virtual Hands](https://dribbble.com/shots/18072951-VR-Slider-Prototype-Hand-Tracking-Direct-Manipulation)
+
+**Pointer**
+💡 Touch Controller
+💡 Virtual Hands
 
 
 ## Links

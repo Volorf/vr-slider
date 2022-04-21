@@ -3,8 +3,11 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
+using TMPro;
 
 [Serializable] public class HandEvent : UnityEvent<VRHand> {}
+
+// TODO: fix a bug with interacting animation via collision exit
 
 public class VRSlider : MonoBehaviour
 {
@@ -21,6 +24,7 @@ public class VRSlider : MonoBehaviour
     public float offset;
 
     [SerializeField] private TextMesh text;
+    // [SerializeField] private TextMeshProUGUI text;
     
     private Vector3 _snappedHandPosition;
     private Vector3 _snappedButtonDir;
@@ -41,6 +45,9 @@ public class VRSlider : MonoBehaviour
     private bool _isHoldIncreasingRunning = false;
 
     private VRHand _interactingHand;
+
+    private Vector3 _refPos;
+    private float _camZSmoothTime = 0.3f;
     
     private void Start()
     {
@@ -78,7 +85,7 @@ public class VRSlider : MonoBehaviour
             _tempOffset = 0;
             _canBeInteracted = false;
             _isHoldIncreasingRunning = false;
-            StopCoroutine(nameof(IncreaseCounter));
+            StopCoroutine(nameof(AccelerateCounter));
         }
     }
     
@@ -93,7 +100,7 @@ public class VRSlider : MonoBehaviour
     {
         _isPressing = false;
         _isHoldIncreasingRunning = false;
-        StopCoroutine(nameof(IncreaseCounter));
+        StopCoroutine(nameof(AccelerateCounter));
         
         if (Mathf.Abs(_counter) > 1)
         { 
@@ -126,7 +133,7 @@ public class VRSlider : MonoBehaviour
             {
                 if (!_isHoldIncreasingRunning)
                 {
-                    StartCoroutine(nameof(IncreaseCounter), -1);
+                    StartCoroutine(nameof(AccelerateCounter), -1);
                     _isHoldIncreasingRunning = true;
                 }
                 return;
@@ -136,7 +143,7 @@ public class VRSlider : MonoBehaviour
             {
                 if (!_isHoldIncreasingRunning)
                 {
-                    StartCoroutine(nameof(IncreaseCounter), 1);
+                    StartCoroutine(nameof(AccelerateCounter), 1);
                     _isHoldIncreasingRunning = true;
                 }
                 return;
@@ -149,7 +156,7 @@ public class VRSlider : MonoBehaviour
                 _tempOffset += _counterStep;
                 bordersManager.Up();
                 onCounterDescreased.Invoke(_interactingHand);
-                StopCoroutine(nameof(IncreaseCounter));
+                StopCoroutine(nameof(AccelerateCounter));
             }
             
             if (offset <= _tempOffset - _counterStep)
@@ -158,10 +165,12 @@ public class VRSlider : MonoBehaviour
                 _tempOffset -= _counterStep;
                 bordersManager.Down();
                 onCounterIncreased.Invoke(_interactingHand);
-                StopCoroutine(nameof(IncreaseCounter));
+                StopCoroutine(nameof(AccelerateCounter));
             }
 
-            transform.localPosition = new Vector3(0, -offset, 0);
+            // transform.localPosition = new Vector3(0, -offset, 0);
+            Vector3 posTarget = new Vector3(0, -offset, 0);
+            transform.localPosition = Vector3.SmoothDamp(transform.localPosition, posTarget, ref _refPos, _camZSmoothTime);
         }
         else
         {
@@ -169,13 +178,13 @@ public class VRSlider : MonoBehaviour
         }
     }
 
-    private IEnumerator IncreaseCounter(int n)
+    private IEnumerator AccelerateCounter(int n)
     {
         float timeLimit = 0.5f;
         float time = 0f;
         int timeCounter = 0;
         
-        while(true)
+        while (true)
         {
             if (time >= timeLimit)
             {
@@ -184,14 +193,14 @@ public class VRSlider : MonoBehaviour
                 timeCounter++;
             }
 
-            if (timeCounter == 3)
+            switch (timeCounter)
             {
-                timeLimit = 0.1f;
-            }
-            
-            if (timeCounter == 16)
-            {
-                timeLimit = 0.05f;
+                case 3:
+                    timeLimit = 0.1f;
+                    break;
+                case 16:
+                    timeLimit = 0.05f;
+                    break;
             }
 
             time += Time.deltaTime;
