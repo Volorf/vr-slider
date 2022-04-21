@@ -45,6 +45,9 @@ public class VRSlider : MonoBehaviour
     private bool _isHoldIncreasingRunning = false;
 
     private VRHand _interactingHand;
+
+    private Vector3 _refPos;
+    private float _camZSmoothTime = 0.3f;
     
     private void Start()
     {
@@ -165,7 +168,9 @@ public class VRSlider : MonoBehaviour
                 StopCoroutine(nameof(AccelerateCounter));
             }
 
-            transform.localPosition = new Vector3(0, -offset, 0);
+            // transform.localPosition = new Vector3(0, -offset, 0);
+            Vector3 posTarget = new Vector3(0, -offset, 0);
+            transform.localPosition = Vector3.SmoothDamp(transform.localPosition, posTarget, ref _refPos, _camZSmoothTime);
         }
         else
         {
