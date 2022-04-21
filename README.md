@@ -46,6 +46,31 @@ In this version, I used hand tracking as input. Pinching feels very natural but 
 
 Can be used for video game cases, but for casual-routine apps accuracy and precision of hands-based interactions are too low at the moment, which makes it useless for professional usage. 
 
+# VR Slider: Hands Tracking. Direct Manipulation
+
+In this version, I used hand tracking as input. Pinching feels very natural but the lack of tactile feedback increases the number of cognitive efforts you spend to successfully interact with it: there is no haptic feedback; slow movement tracking; and low precision.
+
+**Pros:**
+— Fun
+
+**Cons:**
+— Slow and low
+— Restricted by body movement (arms, back)
+
+Can be used for video game cases, but for casual-routine apps the accuracy and precision of hands-based interactions are too low at the moment, which makes it useless for professional usage. 
+
+Here is a link to the Unity project [VR Hands branch] — https://github.com/Volorf/vr-slider/tree/virtual-hands-direct-manipulation-implementation
+
+Video is captured on Quest 2.
+
+**Direct Manipulation**
+✅ [Touch Controller](https://dribbble.com/shots/17942856-VR-Slider-Prototype-Touch-Controller-Direct-Manipulation)
+✅ [Virtual Hands](https://dribbble.com/shots/18072951-VR-Slider-Prototype-Hand-Tracking-Direct-Manipulation)
+
+**Pointer**
+💡 Touch Controller
+💡 Virtual Hands
+
 
 ## Links
 
